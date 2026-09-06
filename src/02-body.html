@@ -1,0 +1,56 @@
+<header class="topbar">
+  <div class="topbar-in">
+    <div class="brand">
+      <span class="mark" aria-hidden="true">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1 10.5 L4 6.2 L6.6 8 L12 1.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--gold)"/><path d="M1 12h11" stroke="var(--gold)" stroke-width="1.1" stroke-linecap="round" opacity=".45"/></svg>
+      </span>
+      Trade<em>Tracker</em>
+    </div>
+    <div class="rowflex" style="gap:6px">
+      <label for="accSel" class="eyebrow" style="margin-right:2px" data-t="Account">Account</label>
+      <select id="accSel" style="width:auto;min-width:120px;padding:5px 9px;font-size:13px"></select>
+    </div>
+    <div class="topbar-right">
+      <div class="langswitch" role="group" aria-label="Language">
+        <button class="langbtn" data-lang="en" aria-pressed="true">EN</button>
+        <button class="langbtn" data-lang="tr" aria-pressed="false">TR</button>
+      </div>
+      <span id="syncBadge" class="eyebrow" data-t-title="Where your trades are stored" title="Where your trades are stored">Local</span>
+      <button class="btn btn-sm" id="btnExport" data-t="Export">Export</button>
+      <button class="btn btn-sm" id="btnImport" data-t="Import">Import</button>
+      <button class="btn btn-primary btn-sm" id="btnQuickAdd" data-t="+ New trade">+ New trade</button>
+    </div>
+  </div>
+</header>
+
+<div class="shell">
+  <nav class="tabs" role="tablist" id="tabs">
+    <button class="tab" role="tab" data-view="dashboard" aria-selected="true" data-t="Dashboard">Dashboard</button>
+    <button class="tab" role="tab" data-view="new" aria-selected="false" data-t="New Trade">New Trade</button>
+    <button class="tab" role="tab" data-view="history" aria-selected="false" data-t="Trade History">Trade History</button>
+    <button class="tab" role="tab" data-view="analysis" aria-selected="false" data-t="Analysis">Analysis</button>
+    <button class="tab" role="tab" data-view="edge" aria-selected="false" data-t="Edge Lab">Edge Lab</button>
+    <button class="tab" role="tab" data-view="discipline" aria-selected="false" data-t="Discipline">Discipline</button>
+    <button class="tab" role="tab" data-view="risk" aria-selected="false" data-t="Risk & Sizing">Risk &amp; Sizing</button>
+    <button class="tab" role="tab" data-view="review" aria-selected="false" data-t="Trade Review">Trade Review</button>
+    <button class="tab" role="tab" data-view="settings" aria-selected="false" data-t="Settings">Settings</button>
+  </nav>
+
+  <div id="demoBanner" class="banner banner-demo" style="margin-bottom:16px" hidden>
+    <strong data-t="Sample data">Sample data</strong>
+    <span class="grow" data-t="These 26 trades are made up, so every chart has something to show. Clear them before you log your own.">These 26 trades are made up, so every chart has something to show. Clear them before you log your own.</span>
+    <button class="btn btn-sm" id="btnClearDemo" data-t="Clear samples">Clear samples</button>
+  </div>
+
+  <main id="view"></main>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="modal-bg" id="modalBg" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <h3 id="modalTitle">Confirm</h3>
+    <p id="modalBody"></p>
+    <div class="modal-actions" id="modalActions"></div>
+  </div>
+</div>
+<input type="file" id="fileIn" accept="application/json,.json" hidden>
