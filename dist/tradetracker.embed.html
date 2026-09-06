@@ -3301,15 +3301,8 @@ async function buildBackup() {
   }, body);
 }
 
-/** Hand the file to the viewer. Three routes: some embedding hosts expose a
- *  save API and block anchor downloads, so try that first and fall back. */
+/** Download the file, falling back to the clipboard if downloading fails. */
 async function deliver(filename, text) {
-  let dl = null;
-  try { dl = await window.claude?.use('downloads'); } catch (e) { dl = null; }  // host save API, when present
-  if (dl) {
-    try { await dl.save({ filename, data: text }); toast(tx('Saved {f}', { f: filename })); return true; }
-    catch (e) { if (e && e.code === 'cancelled') return false; }
-  }
   try {
     const url = URL.createObjectURL(new Blob([text], { type: 'application/json' }));
     const a = document.createElement('a');

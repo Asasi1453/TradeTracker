@@ -14,7 +14,7 @@ const strip = f => fs.readFileSync(path.join(root, 'src', f), 'utf8')
 
 const ctx = {
   console,
-  window: { claude: null },
+  window: {},
   localStorage: { getItem: () => null, setItem: () => {} },
   document: {
     querySelector: () => ({ textContent: '', title: '', classList: { add() {}, remove() {} } }),
